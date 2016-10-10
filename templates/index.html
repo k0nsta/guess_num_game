@@ -1,0 +1,18 @@
+{% extends '_base_template.html' %}
+
+{% block number_field %}
+    {% from "macros/render_field.html" import render_field %}
+    <form method="POST" action="{{ url_for('guess_number') }}">
+        {{ form.hidden_tag() }}
+        <dl>
+            {% for field in form %}
+                {% if field.id != 'csrf_token' %}
+                    {{ render_field(field) }}
+                {% endif %}
+            {% endfor %}
+        </dl>
+
+        <input type="submit" value="{{ 'Submit' }}" class="btn">
+    </form>
+{% endblock %}
+

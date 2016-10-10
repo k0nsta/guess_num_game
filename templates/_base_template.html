@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess Number Server</title>
+</head>
+<body>
+
+<h1>Welcome to the Game!</h1>
+{% block number_field %}
+{% endblock %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+<p>Your previous attempts:</p>
+<ul>{% for item in items %}
+<li>{{ item }}</li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>
